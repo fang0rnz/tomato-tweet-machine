@@ -1,0 +1,30 @@
+:root {
+  --red: #b00;
+  --blue: #00b;
+  --fullwidth: 100%;
+}
+
+body {
+  margin: 0;
+}
+
+.App {
+  background-image: url("./tomato.png");
+  width: 100%;
+  height: 100vh;
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: sans-serif;
+  text-align: center;
+}
+
+.tomato {
+  width: 50px;
+}
+
+#output {
+  max-width: 350px;
+}
