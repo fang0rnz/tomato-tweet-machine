@@ -87,7 +87,10 @@ function offBrandProcess({ tweet, language, isWithinLimit, keyword }) {
     return processedTweet;
   }
 
-  processedTweet = `${tweet.substr(0, 132).trim()} ${keyword}`;
+  console.log(TWEET_LIMIT - (keyword.length + 1), "limite");
+  processedTweet = `${tweet
+    .substr(0, TWEET_LIMIT - (keyword.length + 1))
+    .trim()} ${keyword}`;
   return processedTweet;
 }
 
@@ -123,8 +126,8 @@ export function processTweet(tweet) {
     return "";
   }
 
+  const delay = randomizeDelay();
   return new Promise((resolve) => {
-    const delay = randomizeDelay();
     setTimeout(() => {
       resolve(addHashtag(tweet));
     }, delay);

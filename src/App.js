@@ -5,10 +5,8 @@ import { processTweet } from "./marketingLogic";
 import { useDebounce } from "./utils/stateHooks";
 import TextArea from "./components/TextArea/TextArea";
 
-const bigtweet =
-  "Lorem dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim #tomato";
 export default function App() {
-  const [tweet, setTweet] = useState(bigtweet);
+  const [tweet, setTweet] = useState("");
   const [processedTweet, setProcessedTweet] = useState(tweet);
   const outputRef = useRef();
 
@@ -30,15 +28,22 @@ export default function App() {
     <div className="App">
       <div className="container">
         <div className="subTitle">Text to tweetify:</div>
-        <TextArea tabIndex="1" id="input" value={tweet} onChange={onChange} />
+        <TextArea
+          name="Tweet input"
+          tabIndex="1"
+          id="input"
+          value={tweet}
+          onChange={onChange}
+        />
         <br />
-        <div className="subTitle"> Tweetified text:</div>
+        <div className="subTitle">Tweetified text:</div>
         <div
           ref={outputRef}
           onFocus={() => {
             navigator.clipboard.writeText(processedTweet);
           }}
           tabIndex="2"
+          data-testid="output"
           id="output"
         >
           {processedTweet}
